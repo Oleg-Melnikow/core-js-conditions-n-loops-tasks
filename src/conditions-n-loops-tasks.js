@@ -71,7 +71,6 @@ function canQueenCaptureKing(queen, king) {
   if (queen.y < 8) {
     for (let i = queen.y; i <= 8; i += 1) {
       if (king.x === queen.x && king.y === i) {
-        console.log('capture a king top');
         return true;
       }
     }
@@ -79,7 +78,6 @@ function canQueenCaptureKing(queen, king) {
   if (queen.y < 8 && queen.x < 8) {
     for (let i = queen.x, j = queen.y; i <= 8 && j <= 8; i += 1, j += 1) {
       if (king.x === i && king.y === j) {
-        console.log('capture a king top Right');
         return true;
       }
     }
@@ -87,7 +85,6 @@ function canQueenCaptureKing(queen, king) {
   if (queen.x < 8) {
     for (let i = queen.x; i <= 8; i += 1) {
       if (king.x === i && king.y === queen.y) {
-        console.log('capture a king right');
         return true;
       }
     }
@@ -95,7 +92,6 @@ function canQueenCaptureKing(queen, king) {
   if (queen.y < 8 && queen.x < 8) {
     for (let i = queen.x, j = queen.y; i > 0 && j <= 8; i -= 1, j += 1) {
       if (king.x === i && king.y === j) {
-        console.log('capture a king top Left');
         return true;
       }
     }
@@ -103,7 +99,6 @@ function canQueenCaptureKing(queen, king) {
   if (queen.x > 0) {
     for (let i = queen.x; i > 0; i -= 1) {
       if (king.x === i && king.y === queen.y) {
-        console.log('capture a king left');
         return true;
       }
     }
@@ -111,7 +106,6 @@ function canQueenCaptureKing(queen, king) {
   if (queen.y > 0) {
     for (let i = queen.y; i > 0; i -= 1) {
       if (king.x === queen.x && king.y === i) {
-        console.log('capture a king bottom');
         return true;
       }
     }
@@ -119,7 +113,6 @@ function canQueenCaptureKing(queen, king) {
   if (queen.y > 0 && queen.x > 0) {
     for (let i = queen.x, j = queen.y; i > 0 && j > 0; i -= 1, j -= 1) {
       if (king.x === i && king.y === j) {
-        console.log('capture a king bottom Left');
         return true;
       }
     }
@@ -127,7 +120,6 @@ function canQueenCaptureKing(queen, king) {
   if (queen.y > 0 && queen.x <= 8) {
     for (let i = queen.x, j = queen.y; i <= 8 && j > 0; i += 1, j -= 1) {
       if (king.x === i && king.y === j) {
-        console.log('capture a king bottom Right');
         return true;
       }
     }
