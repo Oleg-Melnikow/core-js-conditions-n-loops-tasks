@@ -421,8 +421,37 @@ function getBalanceIndex(arr) {
  *          [10, 9,  8,  7]
  *        ]
  */
-function getSpiralMatrix(/* size */) {
-  throw new Error('Not implemented');
+function getSpiralMatrix(size) {
+  const array = [];
+  for (let i = 0; i < size; i += 1) {
+    array[i] = [];
+    for (let j = 0; j < size; j += 1) {
+      array[i][j] = 1;
+    }
+  }
+
+  let row = 0;
+  let col = 0;
+  let start = 0;
+  let finish = size - 1;
+  for (let i = 1; i <= size * size; i += 1) {
+    array[row][col] = i;
+
+    if (row === start && col < finish) {
+      col += 1;
+    } else if (col === finish && row < finish) {
+      row += 1;
+    } else if (col > start && row === finish) {
+      col -= 1;
+    } else if (col === start && row === finish) {
+      row -= 1;
+      start += 1;
+      finish -= 1;
+    } else if (col === start - 1 && row > start) {
+      row -= 1;
+    }
+  }
+  return array;
 }
 
 /**
@@ -560,8 +589,50 @@ function shuffleChar(str, iterations) {
  * @param {number} number The source number
  * @returns {number} The nearest larger number, or original number if none exists.
  */
-function getNearestBigger(/* number */) {
-  throw new Error('Not implemented');
+function getNearestBigger(number) {
+  const array = [...`${number}`];
+  let indexNum = 0;
+  let item;
+  for (let i = array.length; i >= 0; i -= 1) {
+    if (array[i + 1] > array[i]) {
+      item = array[i];
+      indexNum = i;
+      break;
+    }
+  }
+  let firstPart = [];
+  let secondPart = [];
+  for (let i = 0; i < array.length; i += 1) {
+    if (i < indexNum) {
+      firstPart = [...firstPart, array[i]];
+    } else {
+      secondPart = [...secondPart, array[i]];
+    }
+  }
+
+  let min = secondPart[1];
+  let index = 1;
+  for (let i = 0; i < secondPart.length; i += 1) {
+    if (item < secondPart[i] && secondPart[i] < min) {
+      min = secondPart[i];
+      index = i;
+    }
+  }
+  const temp = secondPart[index];
+  secondPart[index] = item;
+  secondPart[0] = temp;
+
+  const [el, ...second] = secondPart;
+  const res = sortByAsc(second);
+  const result = [...firstPart, el, ...res];
+
+  let num = 0;
+
+  for (let i = 0; i < result.length; i += 1) {
+    num += +result[i] * 10 ** (result.length - i - 1);
+  }
+
+  return num;
 }
 
 module.exports = {
